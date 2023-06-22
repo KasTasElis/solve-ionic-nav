@@ -3,6 +3,8 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
+  IonItem,
+  IonList,
   IonPage,
   IonText,
   IonTitle,
@@ -33,6 +35,21 @@ const Asset = () => {
         </IonHeader>
 
         <IonText>{assetName || "Undefined"}</IonText>
+
+        <IonList>
+          <IonItem button routerLink={`/asset/${assetName}/buy`}>
+            Buy
+          </IonItem>
+          <IonItem button routerLink={`/asset/${assetName}/exchange`}>
+            Exchange
+          </IonItem>
+          <IonItem button routerLink={`/asset/${assetName}/send`}>
+            Send
+          </IonItem>
+          <IonItem button routerLink={`/asset/${assetName}/receive`}>
+            Receive
+          </IonItem>
+        </IonList>
       </IonContent>
     </IonPage>
   );

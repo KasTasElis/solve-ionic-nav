@@ -3,6 +3,8 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
+  IonItem,
+  IonList,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -28,6 +30,15 @@ const Tab2: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <ExploreContainer name="Tab 2 page" />
+
+        <IonList>
+          <IonItem button routerLink="/asset/bitcoin">
+            Bitcoin
+          </IonItem>
+          <IonItem button routerLink="/asset/ethereum">
+            Ethereum
+          </IonItem>
+        </IonList>
       </IonContent>
     </IonPage>
   );

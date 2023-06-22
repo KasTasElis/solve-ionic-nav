@@ -34,7 +34,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import { Asset, Profile, Security } from "./screens";
+import { Asset, Profile, Security, Transaction } from "./screens";
 
 setupIonicReact();
 
@@ -95,7 +95,11 @@ const App = () => (
         <Route path="/profile/security" render={() => <Security />} />
 
         {/* Asset */}
-        <Route path="/asset/:assetName" render={() => <Asset />} />
+        <Route exact path="/asset/:assetName" render={() => <Asset />} />
+        <Route
+          path="/asset/:assetName/:transactionType"
+          render={() => <Transaction />}
+        />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
