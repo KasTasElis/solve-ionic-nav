@@ -30,6 +30,19 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
+
+        <h2>Quick Actions:</h2>
+        <div style={{ display: "flex", gap: "20px", margin: "15px" }}>
+          <IonButton routerLink="/transaction/buy/bitcoin">Buy</IonButton>
+          <IonButton routerLink="/transaction/send/bitcoin">Send</IonButton>
+          <IonButton routerLink="/transaction/exchange/bitcoin">
+            Exchange
+          </IonButton>
+          <IonButton routerLink="/transaction/receive/bitcoin">
+            Receive
+          </IonButton>
+        </div>
+
         <ExploreContainer name="Tab 1 page" />
 
         <IonList>

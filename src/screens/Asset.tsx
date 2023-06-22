@@ -15,8 +15,6 @@ import { useParams } from "react-router-dom";
 const Asset = () => {
   const { assetName } = useParams<any>();
 
-  console.log(assetName);
-
   return (
     <IonPage>
       <IonHeader>

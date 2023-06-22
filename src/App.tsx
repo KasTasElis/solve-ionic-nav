@@ -90,7 +90,7 @@ const App = () => (
           <Redirect to="/tabs" />
         </Route>
 
-        {/* Parallel Routes */}
+        {/* Porfile */}
         <Route exact path="/profile" render={() => <Profile />} />
         <Route path="/profile/security" render={() => <Security />} />
 
@@ -98,6 +98,12 @@ const App = () => (
         <Route exact path="/asset/:assetName" render={() => <Asset />} />
         <Route
           path="/asset/:assetName/:transactionType"
+          render={() => <Transaction />}
+        />
+
+        {/* Transaction */}
+        <Route
+          path="/transaction/:transactionType/:assetName"
           render={() => <Transaction />}
         />
       </IonRouterOutlet>
