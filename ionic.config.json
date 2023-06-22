@@ -1,0 +1,7 @@
+{
+  "name": "TabsNav",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
