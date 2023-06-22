@@ -26,7 +26,13 @@ import { TransactionInfoModal } from "../components/TransactionInfoModal";
 
 const Tab1 = observer(() => {
   const [present] = useIonToast();
-  const { showToast, toggleToast, toggleTransactionInfoModal } = useMst();
+  const {
+    showToast,
+    toggleToast,
+    toggleTransactionInfoModal,
+    toggleCurrencyPicker,
+    setTransactionType,
+  } = useMst();
 
   useEffect(() => {
     if (showToast) {
@@ -73,13 +79,21 @@ const Tab1 = observer(() => {
 
         <h2 className="ion-margin">Quick Actions:</h2>
         <div style={{ display: "flex", gap: "20px", margin: "15px" }}>
-          <IonButton routerLink="/transaction/buy/bitcoin">Buy</IonButton>
-          <IonButton routerLink="/transaction/send/bitcoin">Send</IonButton>
-          <IonButton routerLink="/transaction/exchange/bitcoin">
-            Exchange
+          <IonButton
+            onClick={() => {
+              setTransactionType("buy");
+              toggleCurrencyPicker(true);
+            }}
+          >
+            Buy
           </IonButton>
-          <IonButton routerLink="/transaction/receive/bitcoin">
-            Receive
+          <IonButton
+            onClick={() => {
+              setTransactionType("exchange");
+              toggleCurrencyPicker(true);
+            }}
+          >
+            Exchange
           </IonButton>
         </div>
 
