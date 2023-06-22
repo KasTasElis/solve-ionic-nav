@@ -11,6 +11,7 @@ import {
 } from "@ionic/react";
 import ExploreContainer from "../components/ExploreContainer";
 import "./Tab1.css";
+import { FabButton } from "../components/FabButton";
 
 const Tab1: React.FC = () => {
   return (
@@ -25,6 +26,8 @@ const Tab1: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen>
+        <FabButton />
+
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">Tab 1</IonTitle>
