@@ -6,6 +6,7 @@ const RootStore = types
     showCurrencyPicker: false,
     currencySelection: "",
     transactionType: "",
+    showTransactionInfoModal: false,
   })
   .actions((self) => ({
     toggleToast(isOpen: boolean) {
@@ -19,6 +20,9 @@ const RootStore = types
     },
     setTransactionType(transactionType: string) {
       self.transactionType = transactionType;
+    },
+    toggleTransactionInfoModal(isOpen: boolean) {
+      self.showTransactionInfoModal = isOpen;
     },
   }));
 

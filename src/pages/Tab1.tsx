@@ -22,19 +22,28 @@ import { observer } from "mobx-react";
 import { useMst } from "../models";
 import { CurrencySelectionModal } from "../components/CurrencySelectionModal";
 import { useEffect } from "react";
+import { TransactionInfoModal } from "../components/TransactionInfoModal";
 
 const Tab1 = observer(() => {
   const [present] = useIonToast();
-  const { showToast, toggleToast } = useMst();
+  const { showToast, toggleToast, toggleTransactionInfoModal } = useMst();
 
   useEffect(() => {
     if (showToast) {
       present({
-        message: "Transaction Success!",
-        duration: 2500,
+        header: "Success",
+        message: "Transaction Submitted.",
+        duration: 1500,
         position: "top",
         color: "success",
         onDidDismiss: () => toggleToast(false),
+        buttons: [
+          {
+            text: "TX Info",
+            handler: () => toggleTransactionInfoModal(true),
+            role: "cancel",
+          },
+        ],
       });
     }
   }, [showToast]);
@@ -52,6 +61,7 @@ const Tab1 = observer(() => {
 
       <IonContent fullscreen>
         <CurrencySelectionModal />
+        <TransactionInfoModal />
 
         <FabButton />
 
