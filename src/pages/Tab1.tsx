@@ -34,7 +34,7 @@ const Tab1: React.FC = () => {
           </IonToolbar>
         </IonHeader>
 
-        <h2>Quick Actions:</h2>
+        <h2 className="ion-margin">Quick Actions:</h2>
         <div style={{ display: "flex", gap: "20px", margin: "15px" }}>
           <IonButton routerLink="/transaction/buy/bitcoin">Buy</IonButton>
           <IonButton routerLink="/transaction/send/bitcoin">Send</IonButton>
