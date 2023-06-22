@@ -34,7 +34,8 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import { Asset, Profile, Security, Transaction } from "./screens";
+import { Asset, Profile, Security, Summary, Transaction } from "./screens";
+import { observer } from "mobx-react";
 
 setupIonicReact();
 
@@ -79,36 +80,49 @@ const Tabs = () => (
   </IonPage>
 );
 
-const App = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/tabs" render={() => <Tabs />} />
+const App = observer(() => {
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route path="/tabs" render={() => <Tabs />} />
 
-        {/* Fallback route */}
-        <Route exact path="/">
-          <Redirect to="/tabs" />
-        </Route>
+          {/* Fallback route */}
+          <Route exact path="/">
+            <Redirect to="/tabs" />
+          </Route>
 
-        {/* Porfile */}
-        <Route exact path="/profile" render={() => <Profile />} />
-        <Route path="/profile/security" render={() => <Security />} />
+          {/* Porfile */}
+          <Route exact path="/profile" render={() => <Profile />} />
+          <Route path="/profile/security" render={() => <Security />} />
 
-        {/* Asset */}
-        <Route exact path="/asset/:assetName" render={() => <Asset />} />
-        <Route
-          path="/asset/:assetName/:transactionType"
-          render={() => <Transaction />}
-        />
+          {/* Asset */}
+          <Route exact path="/asset/:assetName" render={() => <Asset />} />
+          <Route
+            path="/asset/:assetName/:transactionType"
+            render={() => <Transaction />}
+          />
 
-        {/* Transaction */}
-        <Route
-          path="/transaction/:transactionType/:assetName"
-          render={() => <Transaction />}
-        />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+          {/* Transaction */}
+          <Route
+            exact
+            path="/transaction/:transactionType/:assetName"
+            render={() => <Transaction />}
+          />
+          <Route
+            exact
+            path="/transaction/:transactionType/:assetName/add-bank"
+            render={() => <Transaction />}
+          />
+          <Route
+            exact
+            path="/transaction/:transactionType/:assetName/summary"
+            render={() => <Summary />}
+          />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
+});
 
 export default App;

@@ -7,22 +7,18 @@ import {
   IonPage,
   IonText,
   IonTitle,
+  IonToast,
   IonToolbar,
 } from "@ionic/react";
-import { useParams } from "react-router-dom";
+import { useMst } from "../models";
 
-const Transaction = () => {
-  const { assetName, transactionType } = useParams<any>();
-
-  const title = `${assetName || "Undefined"} - ${
-    transactionType || "Undefined"
-  }`;
-
+const Summary = () => {
+  const { toggleToast } = useMst();
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>{title}</IonTitle>
+          <IonTitle>Summary</IonTitle>
           <IonButtons slot="start">
             <IonBackButton></IonBackButton>
           </IonButtons>
@@ -31,22 +27,21 @@ const Transaction = () => {
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{title}</IonTitle>
+            <IonTitle size="large">Summary</IonTitle>
           </IonToolbar>
         </IonHeader>
 
-        <IonText>{title}</IonText>
-
-        <IonText>EnterAmount</IonText>
-
+        <IonText>Transaction Summary</IonText>
         <IonButton
-          routerLink={`/transaction/${transactionType}/${assetName}/summary`}
+          routerLink="/"
+          routerDirection="back"
+          onClick={() => toggleToast(true)}
         >
-          Confirm Amount
+          Confirm Transaction
         </IonButton>
       </IonContent>
     </IonPage>
   );
 };
 
-export { Transaction };
+export { Summary };

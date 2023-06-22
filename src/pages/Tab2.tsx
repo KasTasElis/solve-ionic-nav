@@ -4,6 +4,10 @@ import {
   IonContent,
   IonHeader,
   IonItem,
+  IonItemOption,
+  IonItemOptions,
+  IonItemSliding,
+  IonLabel,
   IonList,
   IonPage,
   IonTitle,
@@ -35,6 +39,27 @@ const Tab2: React.FC = () => {
         <ExploreContainer name="Tab 2 page" />
 
         <IonList>
+          <IonItemSliding>
+            <IonItem button routerLink="/asset/bitcoin">
+              <IonLabel>ZepCoin</IonLabel>
+            </IonItem>
+
+            <IonItemOptions>
+              <IonItemOption routerLink="/transaction/send/zepcoin">
+                Snd
+              </IonItemOption>
+              <IonItemOption routerLink="/transaction/buy/zepcoin">
+                Buy
+              </IonItemOption>
+              <IonItemOption routerLink="/transaction/receive/zepcoin">
+                Rcv
+              </IonItemOption>
+              <IonItemOption routerLink="/transaction/exchange/zepcoin">
+                Exc
+              </IonItemOption>
+            </IonItemOptions>
+          </IonItemSliding>
+
           <IonItem button routerLink="/asset/bitcoin">
             Bitcoin
           </IonItem>

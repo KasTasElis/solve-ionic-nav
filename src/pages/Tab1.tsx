@@ -4,16 +4,41 @@ import {
   IonContent,
   IonHeader,
   IonItem,
+  IonItemOption,
+  IonItemOptions,
+  IonItemSliding,
+  IonLabel,
   IonList,
   IonPage,
   IonTitle,
+  IonToast,
   IonToolbar,
+  useIonToast,
 } from "@ionic/react";
 import ExploreContainer from "../components/ExploreContainer";
 import "./Tab1.css";
 import { FabButton } from "../components/FabButton";
+import { observer } from "mobx-react";
+import { useMst } from "../models";
+import { CurrencySelectionModal } from "../components/CurrencySelectionModal";
+import { useEffect } from "react";
 
-const Tab1: React.FC = () => {
+const Tab1 = observer(() => {
+  const [present] = useIonToast();
+  const { showToast, toggleToast } = useMst();
+
+  useEffect(() => {
+    if (showToast) {
+      present({
+        message: "Transaction Success!",
+        duration: 2500,
+        position: "top",
+        color: "success",
+        onDidDismiss: () => toggleToast(false),
+      });
+    }
+  }, [showToast]);
+
   return (
     <IonPage>
       <IonHeader>
@@ -26,6 +51,8 @@ const Tab1: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen>
+        <CurrencySelectionModal />
+
         <FabButton />
 
         <IonHeader collapse="condense">
@@ -49,6 +76,27 @@ const Tab1: React.FC = () => {
         <ExploreContainer name="Tab 1 page" />
 
         <IonList>
+          <IonItemSliding>
+            <IonItem button routerLink="/asset/bitcoin">
+              <IonLabel>ZepCoin</IonLabel>
+            </IonItem>
+
+            <IonItemOptions>
+              <IonItemOption routerLink="/transaction/send/zepcoin">
+                Snd
+              </IonItemOption>
+              <IonItemOption routerLink="/transaction/buy/zepcoin">
+                Buy
+              </IonItemOption>
+              <IonItemOption routerLink="/transaction/receive/zepcoin">
+                Rcv
+              </IonItemOption>
+              <IonItemOption routerLink="/transaction/exchange/zepcoin">
+                Exc
+              </IonItemOption>
+            </IonItemOptions>
+          </IonItemSliding>
+
           <IonItem button routerLink="/asset/bitcoin">
             Bitcoin
           </IonItem>
@@ -59,6 +107,6 @@ const Tab1: React.FC = () => {
       </IonContent>
     </IonPage>
   );
-};
+});
 
 export default Tab1;
