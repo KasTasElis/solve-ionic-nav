@@ -1,37 +1,39 @@
 import {
+  IonBackButton,
   IonButton,
   IonButtons,
   IonContent,
   IonHeader,
   IonPage,
+  IonText,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import ExploreContainer from "../components/ExploreContainer";
-import "./Tab1.css";
 
-const Tab1: React.FC = () => {
+const Profile = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="end">
-            <IonButton routerLink="/profile">Profile</IonButton>
+          <IonTitle>Profile</IonTitle>
+          <IonButtons slot="start">
+            <IonBackButton></IonBackButton>
           </IonButtons>
-          <IonTitle>Tab 1</IonTitle>
         </IonToolbar>
       </IonHeader>
-
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
+            <IonTitle size="large">Profile</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+
+        <IonText>Profile</IonText>
+
+        <IonButton routerLink="profile/security">Security Settings</IonButton>
       </IonContent>
     </IonPage>
   );
 };
 
-export default Tab1;
+export { Profile };
